@@ -6,7 +6,7 @@
   "scripts": {
     "tsn_start": "ts-node src/index.ts",
     "tsn_update": "ts-node src/deploy-commands",
-    "start": "node dist/index.js",
+    "start": "npm run build && node dist/index.js",
     "build": "tsc",
     "clean": "rd /s /q dist && npm run build"
   },
