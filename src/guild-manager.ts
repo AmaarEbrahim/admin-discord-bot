@@ -1,4 +1,4 @@
-import { Guild, Role } from "discord.js";
+import { Guild, Role } from '../node_modules/discord.js';
 
 /**
  * Add the guild to the guildmap when the bot is added to a new server. Set the value to a default
@@ -28,6 +28,10 @@ export function isBotSetupInGuild(guildMap: Map<string, TGuildSettings>, guild: 
     }
 
     return false
+}
+
+export function addGuildToMapWithSettings(guildMap: Map<string, TGuildSettings>, guild: Guild, newSettings: TGuildSettings) {
+    guildMap.set(guild.id, newSettings)
 }
 
 

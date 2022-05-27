@@ -1,5 +1,5 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
-import { ApplicationCommandPermissionData, Guild, GuildMember, User } from "discord.js";
+import { ApplicationCommandPermissionData, Guild, GuildMember, User } from '../../node_modules/discord.js';
 import { ApplicationCommandPermissionTypes } from "discord.js/typings/enums";
 import { TBotCommand } from "../command-holder";
 import { client } from "../index"
@@ -9,11 +9,6 @@ const temporaryMuteCommand = new SlashCommandBuilder()
     .setDescription('Temporary mutes a user')
 	.setDefaultPermission(false)
 	
-const p: ApplicationCommandPermissionData = {
-	id: "",
-	type: ApplicationCommandPermissionTypes.ROLE,
-	permission: true
-}
 
 temporaryMuteCommand.addUserOption(user => 
     user.setName('target')
@@ -88,27 +83,3 @@ export const temp_mute:TBotCommand = {
     })
   }
 }
-
-// let x = 
-
-// function muteUser(user: User, time: number) {
-//     return new Promise<void>(function(resolve, reject) {
-//         addRoleToUser(user, "muted")
-//         setTimeout(()=>, 60000*time)
-//         removeMutedRoleFromUser(user)
-//         resolve()
-//         console.log(user.toString() + " has been unmuted")
-//   })    
-// }
-
-// function removeMutedRoleFromUser(user:User){
-
-// }
-
-// function addRoleToUser(user: User, role: String){
-//   let roleToAdd = user.guild.roles.cache.find(role => role.name === role);
-//   user.
-//   user.roles.add(roleToAdd);
-//   user
-// }
-

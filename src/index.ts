@@ -1,6 +1,6 @@
 import { SlashCommandBuilder } from '@discordjs/builders';
-import { Client, Guild, Intents, User } from 'discord.js'
-import { commands } from './command-holder';
+import { Client, CommandInteraction, Guild, Intents, User } from '../node_modules/discord.js'
+import { commandIsSetupCommand, commands } from './command-holder';
 import { addGuildToMap, isBotSetupInGuild, TGuildSettings } from './guild-manager';
 
 const { token } = require('./../config.json');
@@ -25,24 +25,20 @@ client.on('guildCreate', (guild) => {
     addGuildToMap(guildSettings, guild)
 })
 
-client.on('messageCreate', (message) => {
-    console.log('registered message')
-    if (message.content === 'noob') {
-        message.reply({
-            content: ":(",
-        })
-    }
-} )
 
 client.on('interactionCreate', async interaction => {
     if (!interaction.isCommand()) return;
 
-    
+    // if the command isn't a setup command, and the bot isn't setup, then say
+    // that the bot needs to be set up before usage.
+    const isSetupCommand = commandIsSetupCommand(interaction)
     const canExecuteCommand = isBotSetupInGuild(guildSettings, interaction.guild)
-    if (canExecuteCommand === false) {
+    if (isSetupCommand === false && canExecuteCommand === false) {
         interaction.reply("Set up the bot to use it!") 
+        return;
     }
     
+
 
     // get all existing commands whose name field matches the commandName
     // field of the interaction that was created
@@ -60,6 +56,6 @@ client.on('interactionCreate', async interaction => {
 
 })
 
-
+// login
 client.login(token)
 
