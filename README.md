@@ -9,3 +9,9 @@ something like import {...} from "discord.js" will not work, presumably because
 node tries to resolve discord.js from the node_modules folder of the jest-discord-mocks
 node module. Jest-discord-mocks's version of discord.js is outdated, so many of
 don't exist.
+
+**DATABASE**
+The project uses a mongodb database to store guild-specific settings.
+
+**HOSTING**
+The project will be hosted on heroku.

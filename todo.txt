@@ -1,17 +1,13 @@
 TODO:
-* ability to setup the bot (/setup):
-    - you pick which roles get to use the commands, or if you want to create the
-    role
-    - you pick the role for muted people, or if you want to create one
-    - the timeout time when you are interacting with the bot
-
 * ability to update bot settings (/update):
     - you can update the bot's setting (see all the configurable settings in the 
     /setup command)
 
 * how to store the bot's settings for multiple guilds -- will we need a database?
 
-* hosting the bot on the cloud ;)
+* When the commands are added/updated/removed, these updates should be pushed out
+to all guilds, not just the dev server
+
 
 * handling bot shutdowns. When the bot goes offline, the timer that controls when
 people are unmuted, unbanned, etc. is lost. How should we deal with this?
@@ -20,3 +16,9 @@ people are unmuted, unbanned, etc. is lost. How should we deal with this?
 
 
 COMPLETED:
+* hosting the bot on the cloud
+* ability to setup the bot (/setup):
+    - you pick which roles get to use the commands, or if you want to create the
+    role
+    - you pick the role for muted people, or if you want to create one
+    - the timeout time when you are interacting with the bot
